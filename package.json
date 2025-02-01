@@ -1,19 +1,15 @@
 {
-  "name": "cwiczenie7",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest src/app.test.js",
-    "start": "node src"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
-    "jest": "^29.5.0",
-    "supertest": "^6.3.3"
-  }
+	"name": "app1",
+	"version": "1.0.0",
+	"description": "desc",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"express": "^4.17.1",
+		"mongoose": "^5.9.10"
+	},
+	"author": "Jan Kowalski",
+	"license": "ISC"
 }
