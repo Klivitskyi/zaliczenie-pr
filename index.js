@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
 
+app.use(express.json()); // Middleware to parse JSON request body
+
 // Połączenie z MongoDB
 mongoose.connect('mongodb://mongo:27017/test', { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -27,6 +29,22 @@ app.get('/app', async (req, res) => {
     }
   } catch (error) {
     res.status(500).send('Error accessing the humanitas collection: ' + error.message);
+  }
+});
+
+// Endpoint POST, aby dodać nowy dokument do kolekcji 'humanitas'
+app.post('/app/add', async (req, res) => {
+  try {
+    const newEntry = new Humanitas({
+      name: req.body.name || "Anna Nowak",
+      age: req.body.age || null,
+      occupation: req.body.occupation || null
+    });
+
+    const savedEntry = await newEntry.save();
+    res.json({ message: 'Document inserted successfully', data: savedEntry });
+  } catch (error) {
+    res.status(500).send('Error inserting document: ' + error.message);
   }
 });
 
